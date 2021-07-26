@@ -1,5 +1,5 @@
 import React from 'react';
-import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './App.scss';
 import { setIsLoggedIn } from './redux/actions/session-actions';
 import history from './history';

@@ -1,4 +1,7 @@
 {
     "LANDING": "/",
-    "DASHBOARD": "/dashboard"
+    "DASHBOARD": "/home",
+    "REVIEWS": "/reviews",
+    "STAKEHOLDERS": "/stakeholders",
+    "LOGOUT": "/logout"
 }

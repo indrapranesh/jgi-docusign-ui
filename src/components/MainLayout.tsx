@@ -1,58 +1,53 @@
-import { Layout, Menu, PageHeader } from 'antd';
+import { Layout, Menu } from 'antd';
 import React from 'react';
 import { routing } from '../constants/routing';
 import history from '../history';
-import {
-  UserOutlined,
-  UploadOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
 import { Footer } from 'antd/lib/layout/layout';
 import Routes from './Routes';
+import './MainLayout.scss';
 
-const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 class MainLayout extends React.Component {
   
   render() {
     return (
         <Layout className="h-screen">
-        <Sider
-        breakpoint="lg"
-        collapsedWidth="0"
-        onBreakpoint={broken => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
-      >
-        <div className="logo" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-          <Menu.Item key="1" icon={<UserOutlined />}>
-            nav 1
-          </Menu.Item>
-          <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-            nav 2
-          </Menu.Item>
-          <Menu.Item key="3" icon={<UploadOutlined />}>
-            nav 3
-          </Menu.Item>
-          <Menu.Item key="4" icon={<UserOutlined />}>
-            nav 4
-          </Menu.Item>
-        </Menu>
-      </Sider>
-        <Layout>
-          <Content style={{ margin: '24px 16px 0' }}>
-            <div className="site-layout-background h-full" style={{ padding: 24, minHeight: 360 }}>
-              <Routes />
+            <Sider
+            breakpoint="lg"
+            width="250"
+            collapsedWidth="0"
+            onBreakpoint={broken => {
+            console.log(broken);
+            }}
+            onCollapse={(collapsed, type) => {
+            console.log(collapsed, type);
+            }}
+        >
+            <div className="h-20 flex items-center justify-center">
+                <p className="logo font-bold text-xl text-white ">Chimp Auditor</p>
             </div>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>Chimp Auditor ©2021 Made with Love.</Footer>
+            <div className="pt-5">
+                <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+                    {
+                        routing.map((route, index) => 
+                            <Menu.Item onClick={() => history.push(route.path)} key={index} icon={<route.icon />}>
+                                {route.value}
+                            </Menu.Item>
+                        )
+                    }
+                </Menu>
+            </div>
+            </Sider>
+            <Layout>
+            <Content style={{ margin: '24px 16px 0' }}>
+                <div className="site-layout-background h-full" style={{ padding: 24, minHeight: 360 }}>
+                <Routes />
+                </div>
+            </Content>
+            <Footer style={{ textAlign: 'center' }}>Chimp Auditor ©2021 Made with Love.</Footer>
+            </Layout>
         </Layout>
-      </Layout>
     );
   }
 }
