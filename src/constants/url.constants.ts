@@ -1,3 +1,19 @@
-const clientId = process.env.REACT_APP_CLIENT_ID;
-const redirectUrl = 'http://localhost:3000'
-export const LOGIN_URL = `https://www.arcgis.com/sharing/rest/oauth2/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUrl}&grant_type=token`;
+// Oauth Login 
+const REDIRECT_URI = 'http://localhost:3000/';
+const USER_SCOPE = `signature%20user_read%20user_write%20group_read`;
+const INTEGRATION_KEY = process.env.REACT_APP_DOCUSIGN_INTEGRATION_KEY;
+export const USER_LOGIN_URL = `https://account-d.docusign.com/oauth/auth?response_type=token&scope=${USER_SCOPE}&client_id=${INTEGRATION_KEY}&redirect_uri=${REDIRECT_URI}`;
+
+//Backend Url 
+export const BASE_URL = `http://localhost:5000/`;
+
+export const API_URL = {
+    SEND_ENVELOPE: 'envelope/send'
+}
+
+
+export const DOCUSIGN_URL = `https://demo.docusign.net/restapi/v2.1/accounts/${process.env.REACT_APP_DOCUSIGN_ACCOUNT_ID}/`;
+
+export const DOCUSIGN_PATHS = {
+    LIST_GROUPS: '/groups'
+}
