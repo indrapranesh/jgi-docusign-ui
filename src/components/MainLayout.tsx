@@ -8,7 +8,23 @@ import './MainLayout.scss';
 
 const { Content, Sider } = Layout;
 
-class MainLayout extends React.Component {
+interface LayoutState {
+    selectedKey: Array<string>
+}
+
+class MainLayout extends React.Component<{}, LayoutState> {
+
+    constructor(props: any) {
+        super(props);
+        routing.map((route, index) => {
+            if(window.location.pathname === route.path) {
+                this.state = {
+                    selectedKey: [`${index}`]
+                };
+                console.log(route.path, index)
+            }
+        })
+    }
   
   render() {
     return (
@@ -28,7 +44,7 @@ class MainLayout extends React.Component {
                 <p className="logo font-bold text-xl text-white ">Chimp Auditor</p>
             </div>
             <div className="pt-5">
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+                <Menu theme="dark" mode="inline" defaultSelectedKeys={this.state.selectedKey}>
                     {
                         routing.map((route, index) => 
                             <Menu.Item onClick={() => history.push(route.path)} key={index} icon={<route.icon />}>
