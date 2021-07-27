@@ -15,5 +15,5 @@ export const API_URL = {
 export const DOCUSIGN_URL = `https://demo.docusign.net/restapi/v2.1/accounts/${process.env.REACT_APP_DOCUSIGN_ACCOUNT_ID}/`;
 
 export const DOCUSIGN_PATHS = {
-    LIST_GROUPS: '/groups'
+    LIST_GROUPS: 'groups'
 }

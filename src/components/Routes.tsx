@@ -5,6 +5,7 @@ import { Dashboard } from "./Dashboard";
 import { StakeHolders } from './StakeHolders';
 import routes from '../constants/routes.json';
 import { Reviews } from './Reviews';
+import Logout from './Logout';
 
 
 function Routes() {
@@ -14,6 +15,7 @@ function Routes() {
         <Route exact path={routes.DASHBOARD} component={Dashboard} />
         <Route exact path={routes.STAKEHOLDERS} component={StakeHolders} />
         <Route exact path={routes.REVIEWS} component={Reviews} />
+        <Route exact path={routes.LOGOUT} component={Logout} />
     </>
   );
 }
