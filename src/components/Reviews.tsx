@@ -14,7 +14,7 @@ class Reviews extends React.Component<ReviewProps, ReviewState> {
 
     constructor(props: any) {
         super(props);
-        let reviewId = JSON.parse(this.props.match.params).param1;
+        let reviewId = (JSON.parse(this.props.match.params)).param1;
         this.state = {
             reviewId: reviewId
         }
