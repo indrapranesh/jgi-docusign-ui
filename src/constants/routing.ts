@@ -8,8 +8,8 @@ export const routing = [
         icon: HomeOutlined
     },
     {
-        value: 'Reviews',
-        path: routes.REVIEWS,
+        value: 'Audits',
+        path: routes.AUDITS,
         icon: AuditOutlined
     },
     {

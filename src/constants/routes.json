@@ -1,7 +1,8 @@
 {
     "LANDING": "/",
     "DASHBOARD": "/home",
-    "REVIEWS": "/reviews",
+    "AUDITS": "/audits",
+    "REVIEWS": "/audits/review/:param1",
     "STAKEHOLDERS": "/stakeholders",
     "LOGOUT": "/logout"
 }

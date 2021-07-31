@@ -16,15 +16,14 @@ class MainLayout extends React.Component<{}, LayoutState> {
 
     constructor(props: any) {
         super(props);
-        this.state = {
-            selectedKey: ['0']
-        }
-        routing.map((route, index) => {
-            if(window.location.pathname === route.path) {
-                this.setState({
+        routing.forEach((route, index) => {
+            console.log(window.location.pathname, route.path)
+            if(window.location.pathname.includes(route.path)) {
+                this.state = {
                     selectedKey: [`${index}`]
-                });
+                };
                 console.log(route.path, index)
+                console.log(this.state)
             }
         })
     }

@@ -4,8 +4,9 @@ import Landing from "./Landing";
 import { Dashboard } from "./Dashboard";
 import { StakeHolders } from './StakeHolders';
 import routes from '../constants/routes.json';
-import { Reviews } from './Reviews';
 import Logout from './Logout';
+import Audit from './Audit';
+import Reviews from './Reviews';
 
 
 function Routes() {
@@ -14,6 +15,7 @@ function Routes() {
         <Route exact path="/" component={Landing} />
         <Route exact path={routes.DASHBOARD} component={Dashboard} />
         <Route exact path={routes.STAKEHOLDERS} component={StakeHolders} />
+        <Route exact path={routes.AUDITS} component={Audit} />
         <Route exact path={routes.REVIEWS} component={Reviews} />
         <Route exact path={routes.LOGOUT} component={Logout} />
     </>

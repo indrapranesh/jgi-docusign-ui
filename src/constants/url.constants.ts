@@ -8,7 +8,8 @@ export const USER_LOGIN_URL = `https://account-d.docusign.com/oauth/auth?respons
 export const BASE_URL = `http://localhost:5000/`;
 
 export const API_URL = {
-    SEND_ENVELOPE: 'envelope/send'
+    SEND_ENVELOPE: 'envelope/send',
+    GET_AUDITS: 'audits'
 }
 
 

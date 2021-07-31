@@ -1,6 +1,24 @@
 import React from "react";
 
-export class Reviews extends React.Component {
+interface ReviewProps {
+    match: {
+        params: string
+    }
+}
+
+interface ReviewState {
+    reviewId: number
+}
+
+class Reviews extends React.Component<ReviewProps, ReviewState> {
+
+    constructor(props: any) {
+        super(props);
+        let reviewId = JSON.parse(this.props.match.params).param1;
+        this.state = {
+            reviewId: reviewId
+        }
+    }
 
     render() {
         return(
@@ -10,3 +28,5 @@ export class Reviews extends React.Component {
         )
     }
 }
+
+export default Reviews;
