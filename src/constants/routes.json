@@ -2,7 +2,7 @@
     "LANDING": "/",
     "DASHBOARD": "/home",
     "AUDITS": "/audits",
-    "REVIEWS": "/audits/review/:param1",
+    "REVIEWS": "/audits/review/:id",
     "STAKEHOLDERS": "/stakeholders",
     "LOGOUT": "/logout"
 }

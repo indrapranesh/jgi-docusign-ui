@@ -21,6 +21,10 @@ export class APIService {
                         Promise.reject(error)
                     });
                 axiosApiInstance.interceptors.response.use((response) => {
+                    if(response?.data?.status === 401) {
+                        localStorage.clear();
+                        window.location.reload();
+                    }
                     return response
                     }, async function (error) {
                     const originalRequest = error.config;

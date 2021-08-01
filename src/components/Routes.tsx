@@ -10,6 +10,29 @@ import Reviews from './Reviews';
 
 
 function Routes() {
+
+  // const AuthenticatedRoute = ({ component, appProps, ...rest }) => {
+  //   return (
+  //     <Route
+  //       {...rest}
+  //       render={props =>
+  //         appProps.isAuthenticated
+  //           ? <Route {...props} {...appProps} />
+  //           : <Redirect
+  //               to={`/login?redirect=${props.location.pathname}${props.location.search}`}
+  //             />}
+  //     />
+  //   );
+  // }
+
+  // const UnAuthenticatedRoute = ({ component, appProps, ...rest }) =>
+  // <Route
+  //   {...rest}
+  //   render={props =>
+  //     !appProps.isAuthenticated
+  //       ? <Route {...props} {...appProps} />
+  //       : <Redirect to="/" />}
+  // />;
   return (
     <>
         <Route exact path="/" component={Landing} />

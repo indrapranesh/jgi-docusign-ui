@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { APIService } from '../helpers/ApiService';
 import { API_URL, BASE_URL } from '../constants/url.constants';
 import history from '../history';
-import routes from '../constants/routes.json';
 
 function Audit() {
 
@@ -13,7 +12,7 @@ function Audit() {
     const expandedRowRender = (record: any, index: number) => {
 
         const openEnvelope = (record: any) => {
-            history.push(`${routes.REVIEWS}/${record.id}`)
+            history.push(`audits/review/${record.id}`)
         }
         
         const columns = [
@@ -28,6 +27,7 @@ function Audit() {
                 id: review.id,
                 index: index+1,
                 startDate: review.createdAt,
+                key: index
             })
         })
         return <Table columns={columns} dataSource={data} pagination={false} />;
@@ -51,7 +51,8 @@ function Audit() {
                 startDate: audit.createdAt,
                 initialVersion: audit.initialVersion,
                 status: audit.isCompleted ? 'Completed' : 'Active',
-                reviews: audit.reviews
+                reviews: audit.reviews,
+                key: index
             }
             console.log(data)
             audits.push(data);

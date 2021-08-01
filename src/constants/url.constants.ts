@@ -9,7 +9,9 @@ export const BASE_URL = `http://localhost:5000/`;
 
 export const API_URL = {
     SEND_ENVELOPE: 'envelope/send',
-    GET_AUDITS: 'audits'
+    GET_AUDITS: 'audits',
+    GET_ENVEOPES: (id: number) => `review/envelopes/${id}`,
+    GET_USERS: 'group/users'
 }
 
 
