@@ -13,16 +13,8 @@ export class Dashboard extends React.Component<{},{version: string}> {
         }
     }
 
-    sendEnvelope() {
-        APIService.post(`${BASE_URL}`,`${API_URL.SEND_ENVELOPE}`, {
-            version: '1.0.0',
-            email: 'indrapraneshp@gmail.com',
-            name: 'Indra Pranesh'
-        })
-    }
-
-    createAudit() {
-
+    async createAudit() {
+        await APIService.post(`${BASE_URL}`, API_URL.CREATE_AUDIT, {});
     }
 
     iframe = () => {
@@ -45,9 +37,6 @@ export class Dashboard extends React.Component<{},{version: string}> {
                 </div>
                 <div className="embed-container" dangerouslySetInnerHTML={ this.iframe() }>
                 </div>
-                {/* <Button type="primary" shape="round" size="large" onClick={this.sendEnvelope}>
-                    Send Envelope
-                </Button> */}
             </div>
         )
     }

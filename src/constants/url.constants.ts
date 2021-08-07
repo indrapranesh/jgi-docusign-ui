@@ -11,12 +11,15 @@ export const API_URL = {
     SEND_ENVELOPE: 'envelope/send',
     GET_AUDITS: 'audits',
     GET_ENVEOPES: (id: number) => `review/envelopes/${id}`,
-    GET_USERS: 'group/users'
+    GET_USERS: 'group/users',
+    CREATE_AUDIT: 'audit',
+    GET_ENVELOPE_DATA: (id:string) => `envelope/data/${id}`,
+    GET_MAP_IMAGE: (id: string) => `envelope/map/${id}`
 }
 
 
 export const DOCUSIGN_URL = `https://demo.docusign.net/restapi/v2.1/accounts/${process.env.REACT_APP_DOCUSIGN_ACCOUNT_ID}/`;
 
 export const DOCUSIGN_PATHS = {
-    LIST_GROUPS: 'groups'
+    GET_MAP_IMAGE: (id: string) => `envelopes/${id}/documents/2/pages/1/page_image`,
 }

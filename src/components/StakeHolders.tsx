@@ -25,7 +25,7 @@ export class StakeHolders extends React.Component<{}, StakeHoldersState> {
     async getUsers() {
         console.log('hello')
         let users = await APIService.get(BASE_URL, API_URL.GET_USERS);
-        users?.users.forEach((user, index) => {
+        users?.users?.forEach((user, index) => {
             user.key = index
         })
         this.setState({
