@@ -1,4 +1,4 @@
-import { Button, Table, Tooltip } from "antd";
+import { Button, Table } from "antd";
 import Modal from "antd/lib/modal/Modal";
 import React from "react";
 import { API_URL, BASE_URL } from "../constants/url.constants";
@@ -69,6 +69,7 @@ class Reviews extends React.Component<ReviewProps, ReviewState> {
         { title: 'StakeHolder Name', dataIndex: 'name', key: 'name' },
         { title: 'Envelope ID', dataIndex: 'envelopeId', key: 'envelopeId' },
         { title: 'Status', dataIndex: 'status', key: 'status' },
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
         { title: 'Data', key: 'operation', render: (_: any, record: any) => <a onClick={() => this.openData(record)}>View Data</a> },
     ];
 
@@ -87,33 +88,18 @@ class Reviews extends React.Component<ReviewProps, ReviewState> {
         })
     }
 
-    createNewReview() {
-
-    }
-
     render() {
         return(
             <>
-                <div className="pb-3 flex justify-end">
-                    <Tooltip title={this.state.allCompleted ? '' : 'Envelopes Pending'}>
-                        <Button type="primary" shape="round" size="large" 
-                            onClick={this.createNewReview} 
-                            disabled={!this.state.allCompleted}>
-                                Create Next Review
-                        </Button>
-                    </Tooltip>
-                </div>
                <Table columns={this.columns} dataSource={this.state.status} />
                <Modal
                     visible={this.state.modalOpen}
                     title="Envelope Data"
-                    footer={[
-                        <Button key="close" onClick={this.handleCancel}>
-                        Close
-                        </Button>
-                    ]} >
+                    width={'50%'}
+                    onCancel={this.handleCancel}
+                    footer={null} >
                         <EnvelopeData props={this.state.formData} />
-                    </Modal>
+                </Modal>
             </>
         )
     }

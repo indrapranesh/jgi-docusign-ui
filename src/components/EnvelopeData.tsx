@@ -1,11 +1,11 @@
 import React from "react";
 import { API_URL, BASE_URL } from "../constants/url.constants";
 import { APIService } from "../helpers/ApiService";
+import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 
 export interface EnvelopeFormData {
     envelopeId: string,
-    envelopeFormData: Array<any>,
-    comments: any
+    envelopeFormData: Array<any>
 }
 
 export interface EnvelopeDataProps {
@@ -13,55 +13,49 @@ export interface EnvelopeDataProps {
 }
 
 
-export class EnvelopeData extends React.Component<EnvelopeDataProps,{map: any}> {
+export class EnvelopeData extends React.Component<EnvelopeDataProps,{map: any, comments: any}> {
 
     constructor(props: EnvelopeDataProps) {
         super(props);
         this.state = {
-            map: null
+            map: null,
+            comments: null
         }
     }
     mapImage = new Image();
 
     async getMap() {
-        let blob = await APIService.get(BASE_URL, API_URL.GET_MAP_IMAGE(this.props.props.envelopeId));
-        blob = new Blob([blob], {type: 'image/png'})
-        this.mapImage.src  = URL.createObjectURL(blob);
-        console.log(this.mapImage);
+        let res: string = await APIService.get(BASE_URL, API_URL.GET_MAP_IMAGE(this.props.props.envelopeId))
         this.setState({
-            map: this.mapImage
+            map: `data:image/png;base64,${res}`
         })
     }
 
-    renderMap = () => {
-        console.log(this.mapImage);
-        return {
-            __html : `${this.state.map}`
-        }
+    async getComments() {
+        let res: string = await APIService.get(BASE_URL, API_URL.GET_COMMENTS(this.props.props.envelopeId))
+        this.setState({
+            comments: res
+        })
     }
 
     componentDidMount() {
         this.getMap();
+        this.getComments();
     }
-
-    componentWillUnmount() {
-        URL.revokeObjectURL(this.mapImage.src);
-    }
+    
     
     render() {
     
         return (
             <>
-                <div dangerouslySetInnerHTML={this.renderMap()} />
-
-
-                <div>
-                    <label>Comments: </label>
-                    <p>{this.props.props.comments}</p>
-                </div>
-                <div>
-                    <label>Inputs: </label>
-                    <p>{this.props.props.envelopeFormData[1]?.value}</p>
+                
+                <img id="map" src={this.state.map} alt='map range' />
+                <Document file={this.state.comments} >
+                    <Page pageNumber={1}></Page>
+                </Document>
+                <div className="pt-3">
+                    <label className="font-semibold">Inputs: </label>
+                    <p>{this.props.props.envelopeFormData[3]?.value}</p>
                 </div>
             </>
         )

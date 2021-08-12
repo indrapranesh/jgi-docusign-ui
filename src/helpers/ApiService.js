@@ -7,6 +7,7 @@ export class APIService {
         store.dispatch(setLoading(true));
         return new Promise(async (resolve, reject) => {
             try {
+                store.dispatch(setLoading(true))
                 console.log(url);
                 const axiosApiInstance = Axios.create();
                 axiosApiInstance.interceptors.request.use(

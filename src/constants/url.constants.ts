@@ -12,9 +12,14 @@ export const API_URL = {
     GET_AUDITS: 'audits',
     GET_ENVEOPES: (id: number) => `review/envelopes/${id}`,
     GET_USERS: 'group/users',
+    CREATE_USER: 'group/user/create',
     CREATE_AUDIT: 'audit',
+    CREATE_REVIEW: 'review',
     GET_ENVELOPE_DATA: (id:string) => `envelope/data/${id}`,
-    GET_MAP_IMAGE: (id: string) => `envelope/map/${id}`
+    GET_MAP_IMAGE: (id: string) => `envelope/map/${id}`,
+    GET_COMMENTS: (id: string) => `envelope/comments/${id}`,
+    UPDATE_VERSION: 'map',
+    GET_MAP: 'map'
 }
 
 

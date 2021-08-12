@@ -33,12 +33,16 @@ function Landing() {
 
   return (
     <div className="landing ">
-      <div className="container h-full w-full mx-auto flex items-center">
-        <Button type="primary" shape="round" size="large" onClick={login}>
-            Login using DocuSign Account
-        </Button>
+      <div className="container mx-auto flex h-full align-center justify-center flex-col ">
+          <div className="pl-8">
+            <p className="font-bold text-white text-8xl">Chimp Auditor</p>
+            <p className="text-white font-thin text-3xl pt-3"> Collaborative Conservation Planning with Decision-Makers Sign-off</p>
+            <Button className="mt-8" type="primary" shape="round" size="large" onClick={login}>
+                Login using DocuSign Account
+            </Button>
+          </div>
+        </div>
       </div>
-    </div>
   );
 }
 

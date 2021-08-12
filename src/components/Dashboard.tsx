@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import React from "react";
 import { API_URL, BASE_URL } from "../constants/url.constants";
 import { APIService } from "../helpers/ApiService";
@@ -9,12 +8,21 @@ export class Dashboard extends React.Component<{},{version: string}> {
     constructor(props: any) {
         super(props);
         this.state ={
-            version: '1.0.0'
+            version: ''
         }
     }
 
-    async createAudit() {
-        await APIService.post(`${BASE_URL}`, API_URL.CREATE_AUDIT, {});
+    componentDidMount() {
+        this.loadMap();
+    }
+
+    async loadMap() {
+        let map = await APIService.get(BASE_URL, API_URL.GET_MAP);
+        if(map.latestVersion) {
+            this.setState({
+                version: map.latestVersion
+            })
+        }
     }
 
     iframe = () => {
@@ -31,9 +39,6 @@ export class Dashboard extends React.Component<{},{version: string}> {
             <div className="h-full">
                 <div className="flex justify-between mb-5">
                     <p className="font-bold text-xl">Eastern Chimpanzee Range Map - Version: {this.state.version} </p>
-                    <Button type="primary" shape="round" size="large" onClick={this.createAudit}>
-                        Create New Audit
-                    </Button>
                 </div>
                 <div className="embed-container" dangerouslySetInnerHTML={ this.iframe() }>
                 </div>

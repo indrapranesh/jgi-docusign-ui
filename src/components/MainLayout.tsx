@@ -23,21 +23,37 @@ class MainLayout extends React.Component<LayoutProps, LayoutState> {
 
     constructor(props: any) {
         super(props);
+        this.state = {
+            selectedKey: ['0']
+        }
+    }
+
+    componentDidMount() {
+        this.setKey();
+    }
+
+    setKey() {
         routing.forEach((route, index) => {
             console.log(window.location.pathname, route.path)
             if(window.location.pathname.includes(route.path)) {
-                this.state = {
+                this.setState({
                     selectedKey: [`${index}`]
-                };
+                });
                 console.log(route.path, index)
                 console.log(this.state)
+            } else {
+                this.setState({
+                    selectedKey: ['']
+                })
             }
         })
+        console.log(this.state.selectedKey);
     }
   
   render() {
     return (
-        <Layout className="h-screen">
+        this.props.session.isLoggedIn ? (
+            <Layout className="h-screen">
             {
                 (this.props.session.isLoggedIn) ? (
                     <Sider
@@ -74,9 +90,10 @@ class MainLayout extends React.Component<LayoutProps, LayoutState> {
                     <Routes />
                     </div>
                 </Content>
-            <Footer style={{ textAlign: 'center' }}>Chimp Auditor ©2021 Made with Love.</Footer>
+            <Footer style={{ textAlign: 'center' }}>Chimp Auditor ©2021</Footer>
             </Layout>
         </Layout>
+        ): null
     );
   }
 }
