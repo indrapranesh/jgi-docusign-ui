@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { Button, Table, Tag } from 'antd';
+import { Button, notification, Table, Tag } from 'antd';
 import { useEffect, useState } from 'react';
 import { APIService } from '../helpers/ApiService';
 import { API_URL, BASE_URL } from '../constants/url.constants';
@@ -103,6 +103,9 @@ function Audit() {
 
     const createAudit = async() =>  {
         await APIService.post(`${BASE_URL}`, API_URL.CREATE_AUDIT, {});
+        notification.success({
+            message: 'New Audit Created'
+          })
         loadAudits();
     }
 

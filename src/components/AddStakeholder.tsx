@@ -3,9 +3,9 @@ import { API_URL, BASE_URL } from '../constants/url.constants';
 import { APIService } from '../helpers/ApiService';
 
 const AddStakeHolder = ({closeModal}) => {
-  const onFinish = (values: any) => {
+  const onFinish = async(values: any) => {
     console.log('Success:', values);
-    APIService.post(BASE_URL, API_URL.CREATE_USER, values);
+    await APIService.post(BASE_URL, API_URL.CREATE_USER, values);
     notification.success({
       message: 'New Stakeholder added to the group.'
     });

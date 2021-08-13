@@ -40,9 +40,12 @@ const Demo = ({auditId, title,  final, loadAudits, closeModal}) => {
 
   const createReview = async() => {
       if(file.length > 0) {
-        const body = {
+        const body: any = {
             auditId: auditId,
             mapFile: file
+        }
+        if(final) {
+          body.final = true;
         }
         await APIService.post(BASE_URL, API_URL.CREATE_REVIEW, body);
         notification.success({

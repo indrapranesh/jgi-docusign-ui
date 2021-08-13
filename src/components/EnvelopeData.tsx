@@ -34,7 +34,7 @@ export class EnvelopeData extends React.Component<EnvelopeDataProps,{map: any, c
     async getComments() {
         let res: string = await APIService.get(BASE_URL, API_URL.GET_COMMENTS(this.props.props.envelopeId))
         this.setState({
-            comments: res
+            comments: `data:application/pdf;base64,${res}`
         })
     }
 
@@ -55,7 +55,7 @@ export class EnvelopeData extends React.Component<EnvelopeDataProps,{map: any, c
                 </Document>
                 <div className="pt-3">
                     <label className="font-semibold">Inputs: </label>
-                    <p>{this.props.props.envelopeFormData[3]?.value}</p>
+                    <p>{this.props.props.envelopeFormData[2]?.value}</p>
                 </div>
             </>
         )

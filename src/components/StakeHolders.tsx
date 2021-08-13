@@ -18,6 +18,7 @@ export class StakeHolders extends React.Component<{}, StakeHoldersState> {
             users: [],
             userModal: false
         }
+        this.handleCancel = this.handleCancel.bind(this)
     }
 
     columns = [
@@ -49,6 +50,7 @@ export class StakeHolders extends React.Component<{}, StakeHoldersState> {
     }
 
     handleCancel() {
+        this.getUsers();
         this.setState({
             userModal: false
         })

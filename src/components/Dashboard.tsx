@@ -38,7 +38,7 @@ export class Dashboard extends React.Component<{},{version: string}> {
         return (
             <div className="h-full">
                 <div className="flex justify-between mb-5">
-                    <p className="font-bold text-xl">Eastern Chimpanzee Range Map - Version: {this.state.version} </p>
+                    <p className="font-bold text-2xl">Eastern Chimpanzee Range Map - Version: {this.state.version} </p>
                 </div>
                 <div className="embed-container" dangerouslySetInnerHTML={ this.iframe() }>
                 </div>
